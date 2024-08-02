@@ -18,22 +18,29 @@ vim.opt.signcolumn = "yes"
 
 vim.wo.number = true
 
+vim.opt.fillchars = { eob = " "}
+
 vim.keymap.set({'n'}, '<Leader>b', ':Neotree<CR>')
 vim.keymap.set({'n'}, '<Leader>ff', ':Telescope find_files<CR>')
 
 
-vim.g.tagbar_ctags_bin = "/opt/homebrew/bin/ctags"
+--vim.g.tagbar_ctags_bin = "/opt/homebrew/bin/ctags"
 vim.g.tagbar_type_rust = {
 	ctagstype = "rust",
 	kinds = {
-        'T:types,type definitions',
-        'f:functions,function definitions',
-        'g:enum,enumeration names',
-        's:structure names',
-        'm:modules,module names',
-        'c:consts,static constants',
-        't:traits',
-        'i:impls,trait implementations',
-	}
+         'M:macro,Macro Definition',
+         'P:method,A method',
+         'c:implementation,implementation',
+         'e:enumerator,An enum variant',
+         'f:function,Function',
+         'g:enum,Enum',
+         'i:interface,trait interface',
+         'm:field,A struct field',
+         'n:module,module',
+         's:struct,structural type',
+         't:typedef,Type Alias',
+         'v:variable,Global variable',
+	},
+	n = 1000
 }
 
