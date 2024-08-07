@@ -13,4 +13,7 @@ return {
 	  --   config = bar
 	  --   end,
 	},
+	{
+		"sainnhe/everforest"
+	}
 }

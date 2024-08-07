@@ -43,7 +43,8 @@ return {
 		  type = "codelldb", -- matches the adapter
 		  request = "launch", -- could also attach to a currently running process
 		  program = function()
-			  return "/Users/albertlockett/Development/sophon/src/rust/target/debug/plan-executor"
+			  return "/home/albertlockett/Development/sophon/src/rust/target/debug/plan-executor"
+			  -- return "/Users/albertlockett/Development/sophon/src/rust/target/debug/plan-executor"
 		  end,
 		  cwd = "${workspaceFolder}",
 		  stopOnEntry = false,
@@ -51,8 +52,30 @@ return {
 		  runInTerminal = false,
 	  }
 
+	  local lldb_phalanx = {
+		name = "Launch phalanx - local pe",
+		type = "codelldb",
+		request = "launch",
+		program = function()
+			return "/home/albertlockett/Development/sophon/src/phalanx/target/debug/phalanx"
+		end,
+		cwd = "${workspaceFolder}",
+		stopOnEntry = false,
+		args = { "--stack-name", "local-minimum-with-pe" },
+		env = {
+			-- PHALANX_ROOT_URI = "/home/albertlockett/Desktop/lance_datasets/",
+			PHALANX_ROOT_URI = "gs://albert-bucket-lancedb-devland/",
+			PHALANX_TMP_URI = "/tmp",
+			PHALANX_MAGIC_TOKENS = "sk1234==",
+			RUST_LOG = "info"
+		}
+	  }
+
+
+
 	  require('dap').configurations.rust = {
-		  lldb -- different debuggers or more configurations can be used here
+		  lldb, -- different debuggers or more configurations can be used here
+		  lldb_phalanx
 	  }
   end,
 }

@@ -22,6 +22,8 @@ vim.opt.fillchars = { eob = " "}
 
 vim.keymap.set({'n'}, '<Leader>b', ':Neotree<CR>')
 vim.keymap.set({'n'}, '<Leader>ff', ':Telescope find_files<CR>')
+vim.keymap.set({'n'}, '<Leader>ih', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>')
+
 
 
 --vim.g.tagbar_ctags_bin = "/opt/homebrew/bin/ctags"
